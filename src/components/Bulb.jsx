@@ -52,7 +52,7 @@ const Bulb = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-4 mb-2">
+        <div className="flex items-center space-x-4 m-2">
           <span className="font-semibold text-white">Status:</span>
           <span className={isOn ? "text-green-500" : "text-red-500"}>
             {isOn ? "On" : "Off"}
