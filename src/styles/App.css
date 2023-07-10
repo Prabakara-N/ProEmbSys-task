@@ -96,6 +96,12 @@ body {
 .body.on .bulb.five {
   background: #fff;
   box-shadow: 0 0 50px #fff, 0 0 100px #fff, 0 0 150px #fff, 0 0 280px #fff,
+    0 0 250px #fff, 0 0 300px #fff;
+}
+
+.body.on .bulb.six {
+  background: #fff;
+  box-shadow: 0 0 50px #fff, 0 0 100px #fff, 0 0 150px #fff, 0 0 280px #fff,
     0 0 250px #fff, 0 0 300px #fff, 0 0 350px #fff;
 }
 

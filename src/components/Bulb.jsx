@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Bulb = () => {
   const [isOn, setIsOn] = useState(false);
-  const [brightness, setBrightness] = useState(30);
+  const [brightness, setBrightness] = useState(3);
   const [value, setValue] = useState("");
 
   const handleToggle = () => {
@@ -12,7 +12,7 @@ const Bulb = () => {
   const handleBrightnessChange = (e) => {
     setBrightness(parseInt(e.target.value));
 
-    const newValue = e.target.value * 25;
+    const newValue = e.target.value * 16.66;
     setValue(newValue);
   };
 
@@ -37,8 +37,8 @@ const Bulb = () => {
       return "bulb four";
     } else if (brightness === 5) {
       return "bulb five";
-    } else {
-      return "bulb five";
+    } else if (brightness === 6) {
+      return "bulb six";
     }
   };
   return (
@@ -66,10 +66,10 @@ const Bulb = () => {
           <input
             type="range"
             min="0"
-            max="5"
+            max="6"
             value={brightness}
             onChange={handleBrightnessChange}
-            className={`{'bg-[${value}]'} w-full`}
+            className="w-full"
             id="price-slider"
             style={sliderStyle}
           />
