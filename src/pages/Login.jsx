@@ -34,12 +34,10 @@ const Login = () => {
         <div className="fixed w-full px-4 py-20 z-50 ">
           <div className="max-w-[450px] h-[500px] mx-auto bg-black/80 text-white rounded-md">
             <div className="max-w-[320px] mx-auto py-16 px-3 md:px-0">
-              <div className="logo-login text-center ">
-                <img
-                  src="https://res.cloudinary.com/daxmjqsy2/image/upload/v1679395171/logo_q8a29a.png"
-                  alt="logo"
-                  className="w-[90px] h-[50px] mx-auto rounded-xl"
-                />
+              <div className="text-center mb-4">
+                <h2 className="font-semibold text-base md:text-lg">
+                  ProEmbSys Pvt Ltd
+                </h2>
               </div>
               <h1 className="text-3xl font-bold">Sign In</h1>
               {error ? (

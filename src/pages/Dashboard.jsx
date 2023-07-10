@@ -3,9 +3,11 @@ import Bulb from "../components/Bulb";
 
 const Dashboard = () => {
   return (
-    <div>
-      <Bulb />
-    </div>
+    <>
+      <div>
+        <Bulb />
+      </div>
+    </>
   );
 };
 

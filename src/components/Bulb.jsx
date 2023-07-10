@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const Bulb = () => {
   const [isOn, setIsOn] = useState(false);
   const [brightness, setBrightness] = useState(30);
+  const [value, setValue] = useState("");
 
   const handleToggle = () => {
     setIsOn(!isOn);
@@ -10,65 +11,83 @@ const Bulb = () => {
 
   const handleBrightnessChange = (e) => {
     setBrightness(parseInt(e.target.value));
+
+    const newValue = e.target.value * 25;
+    setValue(newValue);
+  };
+
+  const sliderStyle = {
+    background: `linear-gradient(to right,
+            hsl(174, 77%, 80%) 0%,
+            hsl(174, 77%, 80%) ${value}%,
+            hsl(224, 65%, 95%) 0%,
+            hsl(224, 65%, 95%) 100%)`,
   };
 
   const getBulbColor = () => {
     if (brightness === 0) {
-      return "bg-yellow-50 border-yellow-50";
-    } else if (brightness <= 10) {
-      return "bg-yellow-100 border-yellow-100";
-    } else if (brightness <= 20) {
-      return "bg-yellow-200 border-yellow-200";
-    } else if (brightness <= 30) {
-      return "bg-yellow-300 border-yellow-300";
-    } else if (brightness <= 40) {
-      return "bg-yellow-400 border-yellow-400";
-    } else if (brightness <= 50) {
-      return "bg-yellow-500 border-yellow-500";
+      return "bulb";
+    } else if (brightness === 1) {
+      return "bulb one";
+    } else if (brightness === 2) {
+      return "bulb two";
+    } else if (brightness === 3) {
+      return "bulb three";
+    } else if (brightness === 4) {
+      return "bulb four";
+    } else if (brightness === 5) {
+      return "bulb five";
     } else {
-      return "bg-yellow-600 border-yellow-600";
+      return "bulb five";
     }
   };
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="flex flex-col items-center space-y-6">
-        <div
-          className={`w-32 h-32 rounded-full border-4 ${
-            isOn && getBulbColor()
-          }`}
-        ></div>
-        <div className="flex items-center space-x-4">
-          <span className="font-semibold">Status:</span>
+    <>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-slate-900">
+        <div className="wire"></div>
+        <div className={`${isOn && brightness > 0 ? "body on" : "body"} mb-10`}>
+          <div className={`${isOn ? getBulbColor() : "bulb"}`}>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-4 mb-2">
+          <span className="font-semibold text-white">Status:</span>
           <span className={isOn ? "text-green-500" : "text-red-500"}>
             {isOn ? "On" : "Off"}
           </span>
         </div>
-        <div className="flex items-center space-x-4">
-          <span className="font-semibold">Brightness:</span>
-          <span>{brightness}</span>
+        <div className="flex items-center space-x-4 text-white">
+          <span className="font-semibold ">Brightness Level:</span>
+          <span className="text-[#10d5c2]">{brightness}</span>
         </div>
-        <div className="w-40">
+        <div className="w-[250px] mt-6 mb-5">
           <input
             type="range"
             min="0"
-            max="50"
+            max="5"
             value={brightness}
             onChange={handleBrightnessChange}
-            className="w-full"
+            className={`{'bg-[${value}]'} w-full`}
+            id="price-slider"
+            style={sliderStyle}
           />
         </div>
-        <div>
-          <button
-            onClick={handleToggle}
-            className={`${
-              isOn ? "bg-red-500 text-white" : "bg-green-500 text-white"
-            }px-4 py-2 rounded-md`}
-          >
-            {isOn ? "Turn Off" : "Turn On"}
-          </button>
+
+        <div className="mt-2">
+          <label className="switch-button" htmlFor="switch">
+            <div className="switch-outer">
+              <input id="switch" type="checkbox" onChange={handleToggle} />
+              <div className="button">
+                <span className="button-toggle"></span>
+                <span className="button-indicator"></span>
+              </div>
+            </div>
+          </label>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
