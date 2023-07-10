@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Bulb = () => {
   const [isOn, setIsOn] = useState(false);
-  const [brightness, setBrightness] = useState(3);
+  const [brightness, setBrightness] = useState(4);
   const [value, setValue] = useState("");
 
   const handleToggle = () => {
@@ -12,7 +12,7 @@ const Bulb = () => {
   const handleBrightnessChange = (e) => {
     setBrightness(parseInt(e.target.value));
 
-    const newValue = e.target.value * 16.66;
+    const newValue = e.target.value * 14.28;
     setValue(newValue);
   };
 
@@ -25,9 +25,7 @@ const Bulb = () => {
   };
 
   const getBulbColor = () => {
-    if (brightness === 0) {
-      return "bulb";
-    } else if (brightness === 1) {
+    if (brightness === 1) {
       return "bulb one";
     } else if (brightness === 2) {
       return "bulb two";
@@ -39,6 +37,8 @@ const Bulb = () => {
       return "bulb five";
     } else if (brightness === 6) {
       return "bulb six";
+    } else if (brightness === 7) {
+      return "bulb seven";
     }
   };
   return (
@@ -46,7 +46,7 @@ const Bulb = () => {
       <div className="flex flex-col items-center justify-center min-h-screen bg-slate-900">
         <div className="wire"></div>
         <div className={`${isOn && brightness > 0 ? "body on" : "body"} mb-10`}>
-          <div className={`${isOn ? getBulbColor() : "bulb"}`}>
+          <div className={`${isOn && getBulbColor()} bulb`}>
             <span></span>
             <span></span>
           </div>
@@ -65,8 +65,8 @@ const Bulb = () => {
         <div className="w-[250px] mt-6 mb-5">
           <input
             type="range"
-            min="0"
-            max="6"
+            min="1"
+            max="7"
             value={brightness}
             onChange={handleBrightnessChange}
             className="w-full"
