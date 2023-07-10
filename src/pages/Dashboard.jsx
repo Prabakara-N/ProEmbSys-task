@@ -1,7 +1,7 @@
 import React from "react";
 import Bulb from "../components/Bulb";
 
-const Home = () => {
+const Dashboard = () => {
   return (
     <div>
       <Bulb />
@@ -9,4 +9,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dashboard;

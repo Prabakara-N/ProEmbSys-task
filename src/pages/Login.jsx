@@ -12,12 +12,12 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
     try {
       await logIn(email, password);
-      navigate("/home");
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
       if (error.message === "Firebase: Error (auth/user-not-found).") {
@@ -27,6 +27,7 @@ const Login = () => {
       }
     }
   };
+
   return (
     <>
       <div className="w-full h-screen mx-auto bg-slate-600 flex justify-center items-center min-h-[100vh] in">
@@ -45,7 +46,7 @@ const Login = () => {
                 <small className="text-red-500 font-semibold">{error}</small>
               ) : null}
               <form
-                onSubmit={handleSubmit}
+                onSubmit={handleLogin}
                 className="w-full flex flex-col py-4"
               >
                 <input
