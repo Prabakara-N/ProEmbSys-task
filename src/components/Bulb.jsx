@@ -74,7 +74,6 @@ const Bulb = () => {
             style={sliderStyle}
           />
         </div>
-
         <div className="mt-2">
           <label className="switch-button" htmlFor="switch">
             <div className="switch-outer">
